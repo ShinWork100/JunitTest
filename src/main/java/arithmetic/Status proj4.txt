@@ -1,0 +1,166 @@
+Dongmin Shin
+Joseph Olympia
+
+When program starts, it automatically loads set graph into an adjaceny matrix and diplays node pairs and their edge weights. We used Kruskal's algorthim because edges for the MST can be made seperately. The file "GraphMain" contains main method.
+
+Program operations:
+1.Program is able to check if graph is connected, but if graph is unnconnected, it will error IndexOutOfBounds.
+2.Able to create and display a Minimum Spanning Tree from the graph.
+3.Currently working on determining Shortest Path from any given node.
+4.Program ends when 4 is typed for Quit.
+
+Program files:
+DisplayMenu - 
+GraphMain - contains main method
+GraphNode - contains the data of paired nodes and edge weight
+IsConnected -
+KeyMap - 
+LoadingTheGraph - read text file for graph
+MinimumSpanningTree - (loops to check (x,y) and weight, adds to tempList and deletes current vertex)
+My2dDynamicArray - creates adjaceny matrix
+ShortestPath - 
+
+adjust path on line 13
+will error outofbounds on unconnected graphs
+program does not take input for choosing graph file for loading
+
+Notes:
+(find lowest weight and adds vertex to the list but condition that list cannot contain)
+(minimum edge has to be "number of vectors - 1" cannot have same)
+(find smallest weight and delete, size of array shrinks each time) 
+(solves by vertex order) 
+(looping to find has x,y and weight of them. finding smallest weight in the smallest vertex and when found, adding to tempList and deleting current vertex.) (looking for minimum and return.) 
+
+
+--------------------------------------------------------------------------------
+test1 - sample test
+6
+2 1 5 5 6
+2 0 5 2 3
+3 1 3 3 4 5 2
+2 2 4 4 5
+2 3 5 5 7
+3 0 6 2 2 4 7
+
+	0 5 0 0 0 6 
+	5 0 3 0 0 0 
+	0 3 0 4 0 2 
+	0 0 4 0 5 0 
+	0 0 0 5 0 7 
+	6 0 2 0 7 0 
+--------------------------------------------------------------------------------
+test2 - 4 vertex box
+4
+2 1 1 3 1
+2 0 1 2 2
+2 1 2 3 3
+2 2 3 0 1
+	
+	0 1 0 1 
+	1 0 2 0 
+	0 2 0 3 
+	1 0 3 0
+--------------------------------------------------------------------------------
+test3 - connected graph
+6
+2 1 7 4 6  
+3 0 7 3 4 5 2
+2 4 1 5 8
+2 1 4 4 5 
+4 0 4 2 1 3 5 5 7 
+3 1 2 2 8 4 7
+	
+	0 7 0 0 6 0 
+	7 0 0 4 0 2 
+	0 0 0 0 1 8 
+	0 4 0 0 5 0 
+	4 0 1 5 0 7 
+	0 2 8 0 7 0
+--------------------------------------------------------------------------------
+test4 - larger connected graph
+8
+3 1 4 5 2 7 9
+2 0 4 3 7
+2 3 5 6 8
+3 1 7 2 5 4 1
+2 3 1 7 7
+2 0 2 6 2
+2 5 2 2 8
+2 0 9 4 7
+	
+	0 4 0 0 0 2 0 9 
+	4 0 0 7 0 0 0 0 
+	0 0 0 5 0 0 8 0 
+	0 7 5 0 1 0 0 0 
+	0 0 0 1 0 0 0 7 
+	2 0 0 0 0 0 2 0 
+	0 0 8 0 0 2 0 0 
+	9 0 0 0 7 0 0 0 
+--------------------------------------------------------------------------------
+test5 - linear graph with 2 connected and unconnected vertices. same weights
+6
+1 1 2
+2 0 2 2 2
+2 1 2 3 2
+1 2 2
+1 5 2
+1 4 2
+
+	0 2 0 0 0 0 
+	2 0 2 0 0 0 
+	0 2 0 2 0 0 
+	0 0 2 0 0 0 
+	0 0 0 0 0 2 
+	0 0 0 0 2 0 	
+--------------------------------------------------------------------------------
+test6 - linear connected graph ex (0,1) (1,2) ...(4,5). same weights
+6
+1 1 2
+2 0 2 2 2
+2 1 2 3 2
+2 3 2 4 2
+2 3 2 5 2
+1 4 2
+
+	0 2 0 0 0 0 
+	2 0 2 0 0 0 
+	0 2 0 2 0 0 
+	0 0 0 2 2 0 
+	0 0 0 2 0 2 
+	0 0 0 0 2 0 
+--------------------------------------------------------------------------------
+test7 - 1 vertex unconnected. same weights
+6
+3 1 2 2 2 3 2
+3 0 2 2 2 4 2
+3 0 2 1 2 3 2
+3 0 2 2 2 4 2 
+2 1 2 3 2
+0 
+
+	0 2 2 2 0 0 
+	2 0 2 0 2 0 
+	2 2 0 2 0 0 
+	2 0 2 0 2 0 
+	0 2 0 2 0 0 
+	0 0 0 0 0 0
+--------------------------------------------------------------------------------
+test8 - 8 vertices, unconnected graph. 1 edge between each vertice ex (0,1) (2,3) ... (6,7). same weights
+8
+1 1 2
+1 0 2
+1 3 2
+1 2 2
+1 5 2
+1 4 2
+1 7 2
+1 6 2
+
+	0 2 0 0 0 0 0 0 
+	2 0 0 0 0 0 0 0 
+	0 0 0 2 0 0 0 0 
+	0 0 2 0 0 0 0 0 
+	0 0 0 0 0 2 0 0 
+	0 0 0 0 2 0 0 0 
+	0 0 0 0 0 0 0 2 
+	0 0 0 0 0 0 2 0 
