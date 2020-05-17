@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShortestPath.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arithmetic</a> &gt; <a href="index.source.html" class="el_package">arithmetic</a> &gt; <span class="el_source">ShortestPath.java</span></div><h1>ShortestPath.java</h1><pre class="source lang-java linenums">package arithmetic;
+
+import java.util.LinkedList;
+import java.util.Stack;
+
+
+public class ShortestPath {
+
+    int numberOfVectors;
+    LoadingTheGraph loadedGraph;
+    My2dDynamicArray my2dArr;
+
+    LinkedList &lt;Integer&gt; mapX;
+    LinkedList &lt;Integer&gt;mapY;
+    LinkedList &lt;Integer&gt;weight;
+
+    LinkedList&lt;Integer&gt; finalVectorsInSortedGrpah;
+    LinkedList&lt;Integer&gt; finalWegihtConnected;
+    IsConnected connection;
+    LinkedList&lt;GraphNode&gt; nodeArr;
+
+    GraphNode tempNode;
+    Stack&lt;Integer&gt; previousCheck;
+
+<span class="fc" id="L25">    public ShortestPath(IsConnected connection){</span>
+
+<span class="fc" id="L27">        this.connection = connection;</span>
+<span class="fc" id="L28">        nodeArr = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L29">        numberOfVectors = connection.getNumberOfVectors();</span>
+<span class="fc" id="L30">        mapX = connection.getLinkedListXcoord();</span>
+<span class="fc" id="L31">        mapY = connection.getLinkedListYcoord();</span>
+<span class="fc" id="L32">        weight = connection.getLinkedListWeight();</span>
+<span class="fc" id="L33">        finalVectorsInSortedGrpah = connection.getLinkedListSortedVectors();</span>
+<span class="fc" id="L34">        previousCheck = new Stack&lt;&gt;();</span>
+<span class="fc" id="L35">        nodeArrInsert();</span>
+<span class="fc" id="L36">        shortProcess(0);</span>
+
+<span class="fc" id="L38">    }</span>
+
+    class ShortNode{
+        int previousVector;
+        int currentVector;
+<span class="nc" id="L43">        ShortNode(){</span>
+<span class="nc" id="L44">            previousVector = 0;</span>
+<span class="nc" id="L45">        }</span>
+        int getPreviousVector(){
+<span class="nc" id="L47">            return previousVector;</span>
+        }
+    }
+
+    // or just use stack to see the what is in the top of
+
+    boolean isItConnected(){
+<span class="nc" id="L54">        return connection.isItConnected();</span>
+    }
+
+    void numberOfVectexCount(){
+
+<span class="fc" id="L59">        LinkedList&lt;Boolean&gt; check = new LinkedList&lt;&gt;();</span>
+        boolean isSame;
+
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        for(int i=0; i &lt; numberOfVectors; i++){</span>
+<span class="fc" id="L63">            check.add(false);</span>
+        }
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        for(int i =0; i&lt;nodeArr.size();i++ ){</span>
+<span class="fc" id="L67">            check.set(nodeArr.get(i).getGraphX(),true);</span>
+        }
+
+<span class="fc" id="L70">        int count =0;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        for(int i=0; i &lt; check.size(); i++){</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(check.get(i))</span>
+<span class="fc" id="L73">                count++;</span>
+        }
+
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if(count == numberOfVectors)</span>
+<span class="nc" id="L77">            isSame = true;</span>
+        else
+<span class="fc" id="L79">            isSame = false;</span>
+
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if(isSame != true){</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            for(int i =0; i &lt;check.size(); i++){</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">                if(!check.get(i)){</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">                    for(int j =0; j&lt; mapX.size(); j++){</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">                        if(mapY.get(j) == i) {</span>
+<span class="fc" id="L86">                            tempNode = new GraphNode(mapY.get(j), mapX.get(j), weight.get(j));</span>
+<span class="fc" id="L87">                            nodeArr.add(tempNode);</span>
+                        }
+                    }
+                }
+            }
+        }
+<span class="fc" id="L93">    }</span>
+
+    void nodeArrInsert(){
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        for(int i =0; i &lt; mapX.size(); i++){</span>
+<span class="fc" id="L97">            tempNode = new GraphNode(mapX.get(i), mapY.get(i),weight.get(i));</span>
+<span class="fc" id="L98">            nodeArr.add(tempNode);</span>
+        }
+<span class="fc" id="L100">        numberOfVectexCount();</span>
+<span class="fc" id="L101">    }</span>
+    void disPlayNode(){
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for(int i =0; i&lt; nodeArr.size();i++){</span>
+<span class="nc" id="L104">            System.out.println(&quot;Node: &quot; + nodeArr.get(i));</span>
+        }
+<span class="nc" id="L106">    }</span>
+    void shortProcess(int startingPoint){
+
+//        startingPoint =0;
+<span class="fc" id="L110">        int tempStart = startingPoint;</span>
+<span class="fc" id="L111">        LinkedList&lt;Integer&gt; vectorWeight = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L112">        int minimum = 0;</span>
+<span class="fc" id="L113">        int infinity = 999999999;</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        for(int i =0; i &lt; numberOfVectors; i++){</span>
+<span class="fc" id="L115">            vectorWeight.add(0);</span>
+        }
+
+        // for latter temp start + number of Vectors
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        for(int i =0; i&lt; numberOfVectors; i++){</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">           for(int j = 0; j&lt; nodeArr.size(); j++) {</span>
+//               if(startingPoint == i){
+//                   continue;
+//               }
+<span class="fc bfc" id="L124" title="All 2 branches covered.">               if(nodeArr.get(j).getGraphX() == tempStart){</span>
+<span class="fc" id="L125">                   int tempY  = nodeArr.get(j).getGraphY();</span>
+//                   if(startingPoint.)
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">                   if(vectorWeight.get(i) == infinity){</span>
+                       // initializing the linked list with beginning weight
+<span class="nc" id="L129">                       vectorWeight.set(i, nodeArr.get(j).getGraphY());</span>
+                   }
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                   if(vectorWeight.get(i) &lt; vectorWeight.get(tempY)){</span>
+
+                   }
+                   else{
+<span class="fc" id="L135">                       vectorWeight.set(i, vectorWeight.get(i) + nodeArr.get(j).getGraphY());</span>
+                   }
+               }
+           }
+
+<span class="fc" id="L140">           tempStart++;</span>
+
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">           if(startingPoint &gt;= numberOfVectors){</span>
+<span class="nc" id="L143">               startingPoint = 0;</span>
+           }
+        }
+
+<span class="fc" id="L147">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

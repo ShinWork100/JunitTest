@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BinarySearchTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arithmetic</a> &gt; <a href="index.source.html" class="el_package">arithmetic</a> &gt; <span class="el_source">BinarySearchTree.java</span></div><h1>BinarySearchTree.java</h1><pre class="source lang-java linenums">package arithmetic;
+
+class BinarySearchTree 
+{ 
+    /* Class containing left and right child of current node and key value*/
+    class Node 
+    { 
+        int key; 
+        Node left, right; 
+  
+        public Node(int item) 
+<span class="fc" id="L12">        { </span>
+<span class="fc" id="L13">            key = item; </span>
+<span class="fc" id="L14">            left = right = null; </span>
+<span class="fc" id="L15">        } </span>
+    } 
+  
+    // Root of BST 
+    Node root; 
+  
+    // Constructor 
+    public BinarySearchTree() 
+<span class="fc" id="L23">    { </span>
+<span class="fc" id="L24">        root = null; </span>
+<span class="fc" id="L25">    } </span>
+  
+    // This method mainly calls deleteRec() 
+    void deleteKey(int key) 
+    { 
+<span class="fc" id="L30">        root = deleteRec(root, key); </span>
+<span class="fc" id="L31">    } </span>
+  
+    /* A recursive function to insert a new key in BST */
+    Node deleteRec(Node root, int key) 
+    { 
+        /* Base Case: If the tree is empty */
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (root == null)  return root; </span>
+  
+        /* Otherwise, recur down the tree */
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (key &lt; root.key) </span>
+<span class="fc" id="L41">            root.left = deleteRec(root.left, key); </span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        else if (key &gt; root.key) </span>
+<span class="fc" id="L43">            root.right = deleteRec(root.right, key); </span>
+  
+        // if key is same as root's key, then This is the node 
+        // to be deleted 
+        else
+        { 
+            // node with only one child or no child 
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (root.left == null) </span>
+<span class="fc" id="L51">                return root.right; </span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            else if (root.right == null) </span>
+<span class="fc" id="L53">                return root.left; </span>
+  
+            // node with two children: Get the inorder successor (smallest 
+            // in the right subtree) 
+<span class="nc" id="L57">            root.key = minValue(root.right); </span>
+  
+            // Delete the inorder successor 
+<span class="nc" id="L60">            root.right = deleteRec(root.right, root.key); </span>
+        } 
+  
+<span class="fc" id="L63">        return root; </span>
+    } 
+  
+    int minValue(Node root) 
+    { 
+<span class="fc" id="L68">        int minv = root.key; </span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        while (root.left != null) </span>
+        { 
+<span class="fc" id="L71">            minv = root.left.key; </span>
+<span class="fc" id="L72">            root = root.left; </span>
+        } 
+<span class="fc" id="L74">        return minv; </span>
+    } 
+  
+    // This method mainly calls insertRec() 
+    void insert(int key) 
+    { 
+<span class="fc" id="L80">        root = insertRec(root, key); </span>
+<span class="fc" id="L81">    } </span>
+  
+    /* A recursive function to insert a new key in BST */
+    Node insertRec(Node root, int key) 
+    { 
+  
+        /* If the tree is empty, return a new node */
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (root == null) </span>
+        { 
+<span class="fc" id="L90">            root = new Node(key); </span>
+<span class="fc" id="L91">            return root; </span>
+        } 
+  
+        /* Otherwise, recur down the tree */
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (key &lt; root.key) </span>
+<span class="fc" id="L96">            root.left = insertRec(root.left, key); </span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        else if (key &gt; root.key) </span>
+<span class="fc" id="L98">            root.right = insertRec(root.right, key); </span>
+  
+        /* return the (unchanged) node pointer */
+<span class="fc" id="L101">        return root; </span>
+    } 
+  
+    // This method mainly calls InorderRec() 
+    void inorder() 
+    { 
+<span class="fc" id="L107">        inorderRec(root); </span>
+<span class="fc" id="L108">    } </span>
+  
+    // A utility function to do inorder traversal of BST 
+    void inorderRec(Node root) 
+    { 
+<span class="fc bfc" id="L113" title="All 2 branches covered.">        if (root != null) </span>
+        { 
+<span class="fc" id="L115">            inorderRec(root.left); </span>
+<span class="fc" id="L116">            System.out.print(root.key + &quot; &quot;); </span>
+<span class="fc" id="L117">            inorderRec(root.right); </span>
+        } 
+<span class="fc" id="L119">    } </span>
+  
+    // Driver Program to test above functions 
+    // public static void main(String[] args) 
+    // { 
+    //     BinarySearchTree tree = new BinarySearchTree(); 
+  
+    //     /* Let us create following BST 
+    //           50 
+    //        /     \ 
+    //       30      70 
+    //      /  \    /  \ 
+    //     20   40  60   80 */
+    //     tree.insert(50); 
+    //     tree.insert(30); 
+    //     tree.insert(20); 
+    //     tree.insert(40); 
+    //     tree.insert(70); 
+    //     tree.insert(60); 
+    //     tree.insert(80); 
+  
+    //     System.out.println(&quot;Inorder traversal of the given tree&quot;); 
+    //     tree.inorder(); 
+  
+    //     System.out.println(&quot;\nDelete 20&quot;); 
+    //     tree.deleteKey(20); 
+    //     System.out.println(&quot;Inorder traversal of the modified tree&quot;); 
+    //     tree.inorder(); 
+  
+    //     System.out.println(&quot;\nDelete 30&quot;); 
+    //     tree.deleteKey(30); 
+    //     System.out.println(&quot;Inorder traversal of the modified tree&quot;); 
+    //     tree.inorder(); 
+  
+    //     System.out.println(&quot;\nDelete 50&quot;); 
+    //     tree.deleteKey(50); 
+    //     System.out.println(&quot;Inorder traversal of the modified tree&quot;); 
+    //     tree.inorder(); 
+
+
+    // } 
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

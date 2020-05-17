@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="arithmetic.NatPropertiesTest" time="0.172" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="arithmetic.NatPropertiesTest" time="0.167" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -58,12 +58,12 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
   <testcase classname="arithmetic.NatPropertiesTest" name="numberMultiple" time="0.097"/>
-  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanZFalseCase" time="0.012"/>
+  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanZFalseCase" time="0.011"/>
   <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanSTrueCase" time="0.01"/>
-  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanZTrueCase" time="0.01"/>
+  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanZTrueCase" time="0.009"/>
   <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanSFalseCase" time="0.011"/>
-  <testcase classname="arithmetic.NatPropertiesTest" name="numberSubtract" time="0.008"/>
-  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanSFalseCaseSameNumber" time="0.008"/>
-  <testcase classname="arithmetic.NatPropertiesTest" name="numberEqualsSelf" time="0.009"/>
+  <testcase classname="arithmetic.NatPropertiesTest" name="numberSubtract" time="0.007"/>
+  <testcase classname="arithmetic.NatPropertiesTest" name="numberLessThanSFalseCaseSameNumber" time="0.007"/>
+  <testcase classname="arithmetic.NatPropertiesTest" name="numberEqualsSelf" time="0.008"/>
   <testcase classname="arithmetic.NatPropertiesTest" name="numberAdd" time="0.007"/>
 </testsuite>

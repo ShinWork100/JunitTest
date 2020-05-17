@@ -1,3 +1,13 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-arithmetic,arithmetic,Succ,0,169,0,30,0,47,0,24,0,9
-arithmetic,arithmetic,Zero,0,25,0,2,0,9,0,10,0,9
+arithmetic,arithmetic,BinarySearchTree,16,134,3,17,2,37,3,15,0,8
+arithmetic,arithmetic,ShortestPath,37,303,6,32,7,52,7,18,2,4
+arithmetic,arithmetic,AVLTree,28,217,9,21,5,44,7,16,0,8
+arithmetic,arithmetic,ShortestPath.ShortNode,12,0,0,0,4,0,2,0,2,0
+arithmetic,arithmetic,AVLTree.Node,0,12,0,0,0,4,0,1,0,1
+arithmetic,arithmetic,LoadingTheGraph,4,108,0,8,3,30,1,9,1,5
+arithmetic,arithmetic,BinarySearchTree.Node,0,15,0,0,0,4,0,1,0,1
+arithmetic,arithmetic,IsConnected,7,298,2,26,4,58,4,21,2,9
+arithmetic,arithmetic,My2dDynamicArray,59,53,9,3,12,12,8,6,2,6
+arithmetic,arithmetic,MinHeap,0,212,1,17,0,40,1,18,0,10
+arithmetic,arithmetic,GraphNode,11,18,0,0,2,7,2,3,2,3
+arithmetic,arithmetic,MnimumSpanningTree,0,287,1,21,0,61,1,18,0,8

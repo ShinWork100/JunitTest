@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="arithmetic.NatUnitTest" time="0" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="arithmetic.NatUnitTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -57,14 +57,18 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="arithmetic.NatUnitTest" name="testOneIsOne" time="0"/>
+  <testcase classname="arithmetic.NatUnitTest" name="testOneIsOne" time="0.01"/>
   <testcase classname="arithmetic.NatUnitTest" name="testToStringOne" time="0"/>
   <testcase classname="arithmetic.NatUnitTest" name="testAdd" time="0"/>
   <testcase classname="arithmetic.NatUnitTest" name="testSubtract" time="0"/>
   <testcase classname="arithmetic.NatUnitTest" name="testEqualsSame" time="0"/>
   <testcase classname="arithmetic.NatUnitTest" name="testEqualsNonNat" time="0"/>
+  <testcase classname="arithmetic.NatUnitTest" name="getTest" time="0.003"/>
+  <testcase classname="arithmetic.NatUnitTest" name="getMy2dTest" time="0"/>
+  <testcase classname="arithmetic.NatUnitTest" name="my2darrayAddTest" time="0.001"/>
   <testcase classname="arithmetic.NatUnitTest" name="testMultiply" time="0"/>
-  <testcase classname="arithmetic.NatUnitTest" name="testEqualsDifferent" time="0"/>
+  <testcase classname="arithmetic.NatUnitTest" name="testEqualsDifferent" time="0.001"/>
   <testcase classname="arithmetic.NatUnitTest" name="testToStringZero" time="0"/>
+  <testcase classname="arithmetic.NatUnitTest" name="shortestPathTest" time="0"/>
   <testcase classname="arithmetic.NatUnitTest" name="testZeroIsZero" time="0"/>
 </testsuite>

@@ -100,15 +100,15 @@ public class MinHeap {
     } 
   
     // Function to print the contents of the heap 
-    public void print() 
-    { 
-        for (int i = 1; i <= size / 2; i++) { 
-            System.out.print(" PARENT : " + Heap[i] 
-                             + " LEFT CHILD : " + Heap[2 * i] 
-                             + " RIGHT CHILD :" + Heap[2 * i + 1]); 
-            System.out.println(); 
-        } 
-    } 
+    // public void print() 
+    // { 
+    //     for (int i = 1; i <= size / 2; i++) { 
+    //         System.out.print(" PARENT : " + Heap[i] 
+    //                          + " LEFT CHILD : " + Heap[2 * i] 
+    //                          + " RIGHT CHILD :" + Heap[2 * i + 1]); 
+    //         System.out.println(); 
+    //     } 
+    // } 
   
     // Function to build the min heap using 
     // the minHeapify 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IsConnected.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arithmetic</a> &gt; <a href="index.source.html" class="el_package">arithmetic</a> &gt; <span class="el_source">IsConnected.java</span></div><h1>IsConnected.java</h1><pre class="source lang-java linenums">package arithmetic;
+
+import java.util.*;
+
+
+public class IsConnected {
+    int NumberOfVectors;
+    LoadingTheGraph loadedGraph;
+    My2dDynamicArray my2dArr;
+    LinkedList &lt;Integer&gt; mapX;
+    LinkedList &lt;Integer&gt;mapY;
+    LinkedList &lt;Integer&gt;weight;
+    //
+    LinkedList&lt;Integer&gt; finalVectorsInSortedGrpah;
+    LinkedList&lt;Integer&gt; finalWegihtConnected;
+
+    int listForVector;
+    boolean connected;
+
+<span class="nc" id="L20">    public IsConnected(){</span>
+
+<span class="nc" id="L22">    }</span>
+
+<span class="fc" id="L24">    public IsConnected(LoadingTheGraph loadedGraph){</span>
+<span class="fc" id="L25">        this.loadedGraph = loadedGraph;</span>
+<span class="fc" id="L26">        this.NumberOfVectors = loadedGraph.getNumberOfVectors();</span>
+<span class="fc" id="L27">        this.loadedGraph = loadedGraph;</span>
+<span class="fc" id="L28">        my2dArr = loadedGraph.getMy2d();</span>
+<span class="fc" id="L29">        mapX = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L30">        mapY = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L31">        weight = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L32">        finalVectorsInSortedGrpah = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L33">        finalWegihtConnected = new LinkedList&lt;&gt;();</span>
+
+        //function starts
+<span class="fc" id="L36">        xyCheck();</span>
+<span class="fc" id="L37">        connected = isConnectedProcess();</span>
+<span class="fc" id="L38">    }</span>
+    boolean isItConnected(){
+<span class="fc" id="L40">        return connected;</span>
+    }
+    boolean xyCheck(){
+
+        int tempX;
+        ArrayList&lt;Integer&gt; tempArr;
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        for(int x =0; x&lt;loadedGraph.getNumberOfVectors(); x++){</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">            for(int y =0; y&lt;loadedGraph.getNumberOfVectors(); y++){</span>
+                //self loop check
+<span class="fc bfc" id="L50" title="All 2 branches covered.">                if(x == y)</span>
+<span class="fc" id="L51">                    continue;</span>
+                //if you use map you can not have same key
+<span class="fc bfc" id="L53" title="All 2 branches covered.">                if (my2dArr.get(x,y)!=0){</span>
+                    // array of array so
+                    //first array get x value second array y value
+<span class="fc" id="L56">                    mapX.add(x);</span>
+<span class="fc" id="L57">                    mapY.add(y);</span>
+<span class="fc" id="L58">                    weight.add(my2dArr.get(x,y));</span>
+                }
+            }
+        }
+<span class="fc" id="L62">        return false;</span>
+    }
+
+    boolean isConnectedProcess(){
+<span class="fc" id="L66">        LinkedList tempX = mapX;</span>
+<span class="fc" id="L67">        LinkedList tempY = mapY;</span>
+<span class="fc" id="L68">        LinkedList tempWeight = weight;</span>
+<span class="fc" id="L69">        int count = 0;</span>
+//
+//        for (int i =0; i &lt; mapX.size(); i++){
+//                        System.out.println(&quot;(&quot; +mapX.get(i) +&quot; , &quot; + mapY.get(i)+&quot;)&quot;);
+//        }
+//        //
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        for (int i = 0; i&lt; mapX.size(); i++){</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">            for(int j = i+1; j &lt; mapX.size(); j++){</span>
+<span class="fc bfc" id="L78" title="All 4 branches covered.">                if(mapX.get(i) == mapY.get(j) &amp;&amp; mapY.get(i) == mapX.get(j)) {</span>
+<span class="fc" id="L79">                    tempX.remove(j);</span>
+<span class="fc" id="L80">                    tempY.remove(j);</span>
+<span class="fc" id="L81">                    tempWeight.remove(j);</span>
+                }
+            }
+        }
+//        System.out.println(&quot;tempX size: &quot;+  tempY.size());
+//        for (int i =0; i &lt; tempX.size(); i++) {
+//            System.out.println(&quot;(&quot; +tempX.get(i) +&quot; , &quot; + tempY.get(i)+&quot;)&quot; +&quot;  Weight: &quot; + tempWeight.get(i) );
+//        }
+        // putting everything in final sort
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (int i =0; i &lt; tempX.size(); i ++ ){</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">            for (int j = 0; j &lt; finalVectorsInSortedGrpah.size()+1; j++){</span>
+
+<span class="fc" id="L93">                int typeCheckX = (int)tempX.get(i);</span>
+<span class="fc" id="L94">                int typeCheckY = (int)tempY.get(i);</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                if(!finalVectorsInSortedGrpah.contains(typeCheckX)){</span>
+<span class="fc" id="L97">                    int xGen = (int)tempX.get(i);</span>
+<span class="fc" id="L98">                    int weightGen = (int) tempWeight.get(i);</span>
+<span class="fc" id="L99">                    finalVectorsInSortedGrpah.add(xGen);</span>
+<span class="fc" id="L100">                    finalWegihtConnected.add(weightGen);</span>
+                }
+
+<span class="fc bfc" id="L103" title="All 2 branches covered.">                if(!finalVectorsInSortedGrpah.contains(typeCheckY)){</span>
+<span class="fc" id="L104">                    int yGen = (int)tempY.get(i);</span>
+<span class="fc" id="L105">                    int weightGen = (int) tempWeight.get(i);</span>
+<span class="fc" id="L106">                    finalVectorsInSortedGrpah.add(yGen);</span>
+<span class="fc" id="L107">                    finalWegihtConnected.add(weightGen);</span>
+                }
+            }
+        }
+<span class="fc" id="L111">        mapX = tempX;</span>
+<span class="fc" id="L112">        mapY = tempY;</span>
+<span class="fc" id="L113">        weight = tempWeight;</span>
+
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">        if(tempX.size() &gt;= loadedGraph.getNumberOfVectors()-1</span>
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">                &amp;&amp; finalVectorsInSortedGrpah.size() == loadedGraph.getNumberOfVectors())</span>
+<span class="fc" id="L117">            return true;</span>
+<span class="nc" id="L118">        return false;</span>
+    }
+
+    LinkedList&lt;Integer&gt; getLinkedListSortedVectors(){
+<span class="fc" id="L122">        return finalVectorsInSortedGrpah;</span>
+    }
+
+    LinkedList&lt;Integer&gt; getLinkedListWeight(){
+<span class="fc" id="L126">        return weight;</span>
+    }
+    LinkedList&lt;Integer&gt; getLinkedListXcoord(){
+<span class="fc" id="L129">        return mapX;</span>
+    }
+    LinkedList&lt;Integer&gt; getLinkedListYcoord(){
+<span class="fc" id="L132">        return mapY;</span>
+    }
+    // previous void check will prevent the same value
+    //array list size x and y has to be same
+    // array list size x = vectorNumber -1
+    // x ,y  can not be symetric
+    // so if getX getY = getY getX ignore
+    //is arraylist size is greater than vector number -1
+    boolean finalCheck(){
+<span class="nc" id="L141">        return false;</span>
+    }
+    int getNumberOfVectors(){
+<span class="fc" id="L144">        return loadedGraph.getNumberOfVectors();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -57,14 +57,14 @@ public class LoadingTheGraph {
             e.printStackTrace();
         }
     }
-    void displayMatrix(){
-        for(int x=0; x< numberOfVectors; x++){
-            for(int y=0; y< numberOfVectors; y++){
-                System.out.print(my2dDynamicArray.get(x,y) + " ");
-            }
-            System.out.println();
-        }
-    }
+    // void displayMatrix(){
+    //     for(int x=0; x< numberOfVectors; x++){
+    //         for(int y=0; y< numberOfVectors; y++){
+    //             System.out.print(my2dDynamicArray.get(x,y) + " ");
+    //         }
+    //         System.out.println();
+    //     }
+    // }
     int getNumberOfVectors(){
         return numberOfVectors;
     }
