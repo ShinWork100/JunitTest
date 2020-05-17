@@ -49,15 +49,15 @@ class BinarySearchTree
             // node with only one child or no child 
 <span class="fc bfc" id="L50" title="All 2 branches covered.">            if (root.left == null) </span>
 <span class="fc" id="L51">                return root.right; </span>
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            else if (root.right == null) </span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            else if (root.right == null) </span>
 <span class="fc" id="L53">                return root.left; </span>
   
             // node with two children: Get the inorder successor (smallest 
             // in the right subtree) 
-<span class="nc" id="L57">            root.key = minValue(root.right); </span>
+<span class="fc" id="L57">            root.key = minValue(root.right); </span>
   
             // Delete the inorder successor 
-<span class="nc" id="L60">            root.right = deleteRec(root.right, root.key); </span>
+<span class="fc" id="L60">            root.right = deleteRec(root.right, root.key); </span>
         } 
   
 <span class="fc" id="L63">        return root; </span>

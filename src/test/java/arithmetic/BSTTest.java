@@ -26,7 +26,7 @@ public class BSTTest {
         bst.insert(30);
         assertEquals( 20, bst.root.right.key );
     }
-       
+    
     @Test
     public void bstRootCheck(){
         BinarySearchTree bst = new BinarySearchTree();
@@ -98,6 +98,34 @@ public class BSTTest {
         bst.insert(4); 
         
         assertEquals(4, bst.minValue(bst.root));
+    }
+
+    @Test
+    public void deltion(){
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(10);
+        bst.insert(20);
+        bst.insert(30);
+        bst.insert(5);
+        bst.insert(4); 
+
+        bst.deleteKey(4);
+        bst.deleteKey(5);
+        bst.deleteKey(30);
+        bst.deleteKey(20);
+        bst.deleteKey(10);
+
+        bst.insert(5);
+        bst.insert(8);
+        bst.insert(4);
+        bst.insert(1);
+        bst.insert(10); 
+
+        bst.deleteKey(5);
+        bst.deleteKey(8);
+        bst.deleteKey(4);
+        bst.deleteKey(1);
+        bst.deleteKey(10);
     }
 
     

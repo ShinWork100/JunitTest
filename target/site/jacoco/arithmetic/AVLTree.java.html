@@ -67,8 +67,8 @@ public class AVLTree {
   
     // Get Balance factor of node N 
     int getBalance(Node N) { 
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (N == null) </span>
-<span class="nc" id="L71">            return 0; </span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (N == null) </span>
+<span class="fc" id="L71">            return 0; </span>
   
 <span class="fc" id="L73">        return height(N.left) - height(N.right); </span>
     } 
@@ -81,10 +81,10 @@ public class AVLTree {
   
 <span class="fc bfc" id="L82" title="All 2 branches covered.">        if (key &lt; node.key) </span>
 <span class="fc" id="L83">            node.left = insert(node.left, key); </span>
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        else if (key &gt; node.key) </span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        else if (key &gt; node.key) </span>
 <span class="fc" id="L85">            node.right = insert(node.right, key); </span>
         else // Duplicate keys not allowed 
-<span class="nc" id="L87">            return node; </span>
+<span class="fc" id="L87">            return node; </span>
   
         /* 2. Update height of this ancestor node */
 <span class="fc" id="L90">        node.height = 1 + max(height(node.left), </span>
@@ -97,17 +97,17 @@ public class AVLTree {
   
         // If this node becomes unbalanced, then there 
         // are 4 cases Left Left Case 
-<span class="pc bpc" id="L100" title="3 of 4 branches missed.">        if (balance &gt; 1 &amp;&amp; key &lt; node.left.key) </span>
-<span class="nc" id="L101">            return rightRotate(node); </span>
+<span class="fc bfc" id="L100" title="All 4 branches covered.">        if (balance &gt; 1 &amp;&amp; key &lt; node.left.key) </span>
+<span class="fc" id="L101">            return rightRotate(node); </span>
   
         // Right Right Case 
 <span class="fc bfc" id="L104" title="All 4 branches covered.">        if (balance &lt; -1 &amp;&amp; key &gt; node.right.key) </span>
 <span class="fc" id="L105">            return leftRotate(node); </span>
   
         // Left Right Case 
-<span class="pc bpc" id="L108" title="3 of 4 branches missed.">        if (balance &gt; 1 &amp;&amp; key &gt; node.left.key) { </span>
-<span class="nc" id="L109">            node.left = leftRotate(node.left); </span>
-<span class="nc" id="L110">            return rightRotate(node); </span>
+<span class="pc bpc" id="L108" title="1 of 4 branches missed.">        if (balance &gt; 1 &amp;&amp; key &gt; node.left.key) { </span>
+<span class="fc" id="L109">            node.left = leftRotate(node.left); </span>
+<span class="fc" id="L110">            return rightRotate(node); </span>
         } 
   
         // Right Left Case 

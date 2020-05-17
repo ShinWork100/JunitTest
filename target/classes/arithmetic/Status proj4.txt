@@ -1,5 +1,4 @@
 Dongmin Shin
-Joseph Olympia
 
 When program starts, it automatically loads set graph into an adjaceny matrix and diplays node pairs and their edge weights. We used Kruskal's algorthim because edges for the MST can be made seperately. The file "GraphMain" contains main method.
 

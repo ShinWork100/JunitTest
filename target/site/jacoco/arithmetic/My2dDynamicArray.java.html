@@ -12,8 +12,8 @@ public class My2dDynamicArray {
 <span class="fc" id="L12">    }</span>
 
     void add(int x, int y, int input){
-<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if(isMax(x,y))</span>
-<span class="nc" id="L16">            createNew(x,y);</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if(isMax(x,y))</span>
+<span class="fc" id="L16">            createNew(x,y);</span>
 <span class="fc" id="L17">        array[x][y] = input;</span>
 <span class="fc" id="L18">    }</span>
 
@@ -22,27 +22,27 @@ public class My2dDynamicArray {
 <span class="fc" id="L22">    }</span>
     void initialize(){
 
-<span class="nc" id="L25">    }</span>
+<span class="fc" id="L25">    }</span>
     void createNew(int x ,int y){
         //getting bigger by 2 so 2^n every time
         int temp;
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(x&gt;= y)</span>
-<span class="nc" id="L30">            temp = x;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if(x&gt;= y)</span>
+<span class="fc" id="L30">            temp = x;</span>
         else
-<span class="nc" id="L32">            temp = y;</span>
+<span class="fc" id="L32">            temp = y;</span>
 
-<span class="nc" id="L34">        int[][] tempArr = new int[temp*2][temp*2];</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        for(int i = 0; i&lt; currntSize; i++){</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">            for(int z =0; z&lt;currntSize; z++){</span>
-<span class="nc" id="L37">                tempArr[i][z] = array[i][z];</span>
+<span class="fc" id="L34">        int[][] tempArr = new int[temp*2][temp*2];</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for(int i = 0; i&lt; currntSize; i++){</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            for(int z =0; z&lt;currntSize; z++){</span>
+<span class="fc" id="L37">                tempArr[i][z] = array[i][z];</span>
             }
         }
-<span class="nc" id="L40">        currntSize = temp*2;</span>
-<span class="nc" id="L41">        array = tempArr;</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L40">        currntSize = temp*2;</span>
+<span class="fc" id="L41">        array = tempArr;</span>
+<span class="fc" id="L42">    }</span>
 
     boolean isMax(int x, int y){
-<span class="pc bpc" id="L45" title="2 of 4 branches missed.">        return x &gt;= currntSize+1 || y &gt;= currntSize+1;</span>
+<span class="fc bfc" id="L45" title="All 4 branches covered.">        return x &gt;= currntSize+1 || y &gt;= currntSize+1;</span>
     }
 
     int get(int x, int y){

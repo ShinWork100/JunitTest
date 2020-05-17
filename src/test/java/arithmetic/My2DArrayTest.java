@@ -2,6 +2,7 @@ package arithmetic;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -19,7 +20,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 
+// This class is Testing 2D dynamic Array [][] and imeplemented
 public class My2DArrayTest {
+   
     @Test
     public void my2darrayAddTest(){
         My2dDynamicArray temp = new My2dDynamicArray();
@@ -34,18 +37,49 @@ public class My2DArrayTest {
         
         assertEquals(temp.get(0, 0), 1);
     }
-    // @Test
-    // public void isMaxTest(){
-    //     My2dDynamicArray temp = new My2dDynamicArray();
-    //     for(int i =0; i < 110; i++){
-    //         for(int y = 0; y< 110; y ++){
-    //             if(i ==100 && y == 100){
-    //                 assertTrue(temp.isMax(i, y));
-    //             }
-    //             temp.add(i,y,i+y);
-    //         }
-    //     }
-    // }
+
+    @Test
+    public void createNewTestSame(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        temp.createNew(101, 101);
+    }
+
+    @Test
+    public void createNewTestX(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        temp.createNew(120, 80);
+    }
+
+    @Test
+    public void createNewTestY(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        temp.createNew(80, 120);
+    }
+
+    @Test
+    public void isMaxTX(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        assertTrue(temp.isMax(120,40));
+    }
+
+    @Test
+    public void isMaxTy(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        assertTrue(temp.isMax(40,120));
+    } 
+    
+    @Test
+    public void isMaxFx(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        assertFalse(temp.isMax(30,10));
+    } 
+    
+    @Test
+    public void isMaxFy(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        assertFalse(temp.isMax(20,30));
+    }
+
     @Test
     public void getTest(){
         My2dDynamicArray temp = new My2dDynamicArray();
@@ -63,7 +97,22 @@ public class My2DArrayTest {
         temp.add(0,1,2);
         temp.add(0,2,3);
 
-        // assertEquals(temp , temp.getMy2d());
+        int[][] arr = temp.getMy2d();
+        int[][] arrTemp = new int [100][100];
+
+        arrTemp[0][0] = 1;
+        arrTemp[0][1] = 2;
+        arrTemp[0][2] = 3;
+
+        assertEquals(arrTemp[0][0], arr[0][0]);
     }
+    
+    @Test
+    public void addMore(){
+        My2dDynamicArray temp = new My2dDynamicArray();
+        temp.add(110,110, 10);
+        temp.initialize();
+        assertTrue(temp.currntSize > 100);
+    } 
     
 }

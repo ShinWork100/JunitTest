@@ -34,6 +34,7 @@ public class ShortestPath {
         previousCheck = new Stack<>();
         nodeArrInsert();
         shortProcess(0);
+        shortProcess(20);
 
     }
 
@@ -101,7 +102,7 @@ public class ShortestPath {
     }
     void disPlayNode(){
         for(int i =0; i< nodeArr.size();i++){
-            System.out.println("Node: " + nodeArr.get(i));
+            // System.out.println("Node: " + nodeArr.get(i));
         }
     }
     void shortProcess(int startingPoint){

@@ -84,23 +84,14 @@ public class MinHeapTest {
         assertEquals(1, temp.remove());
     }
 
+    public void leftRightTest(){
 
+        MinHeap temp = new MinHeap(5);
+        temp.insert(1);
+        temp.insert(3); 
+        temp.minHeap();
 
-    // public void leftRightTest(){
+        assertEquals(1, temp.remove());
 
-    //     MinHeap temp = new MinHeap(5);
-    //     temp.insert(1);
-    //     temp.insert(3); 
-    //     temp.minHeap();
-
-    //     assertEquals(1, temp.remove());
-
-    // }
-
-    // public void swapTest(){
-    //     temp.insert(1);
-    //     temp.insert(3); 
-    //     temp.minHeap();
-
-    // }
+    }
 }

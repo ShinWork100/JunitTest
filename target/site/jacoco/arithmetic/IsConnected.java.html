@@ -17,9 +17,9 @@ public class IsConnected {
     int listForVector;
     boolean connected;
 
-<span class="nc" id="L20">    public IsConnected(){</span>
+<span class="fc" id="L20">    public IsConnected(){</span>
 
-<span class="nc" id="L22">    }</span>
+<span class="fc" id="L22">    }</span>
 
 <span class="fc" id="L24">    public IsConnected(LoadingTheGraph loadedGraph){</span>
 <span class="fc" id="L25">        this.loadedGraph = loadedGraph;</span>
@@ -113,9 +113,9 @@ public class IsConnected {
 <span class="fc" id="L113">        weight = tempWeight;</span>
 
 <span class="pc bpc" id="L115" title="1 of 2 branches missed.">        if(tempX.size() &gt;= loadedGraph.getNumberOfVectors()-1</span>
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">                &amp;&amp; finalVectorsInSortedGrpah.size() == loadedGraph.getNumberOfVectors())</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">                &amp;&amp; finalVectorsInSortedGrpah.size() == loadedGraph.getNumberOfVectors())</span>
 <span class="fc" id="L117">            return true;</span>
-<span class="nc" id="L118">        return false;</span>
+<span class="fc" id="L118">        return false;</span>
     }
 
     LinkedList&lt;Integer&gt; getLinkedListSortedVectors(){
@@ -138,7 +138,7 @@ public class IsConnected {
     // so if getX getY = getY getX ignore
     //is arraylist size is greater than vector number -1
     boolean finalCheck(){
-<span class="nc" id="L141">        return false;</span>
+<span class="fc" id="L141">        return false;</span>
     }
     int getNumberOfVectors(){
 <span class="fc" id="L144">        return loadedGraph.getNumberOfVectors();</span>
